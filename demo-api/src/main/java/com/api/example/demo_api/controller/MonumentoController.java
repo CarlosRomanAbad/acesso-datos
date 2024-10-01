@@ -1,9 +1,13 @@
 package com.api.example.demo_api.controller;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +39,8 @@ public class MonumentoController {
     public ResponseEntity<?> deleteMonumento(@PathVariable Long id) {
         if (monumentoRepository.existsById(id)) {
             monumentoRepository.deleteById(id);
-            return ResponseEntity.ok().build(); ∫
+            
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build(); 
         }
@@ -43,11 +48,18 @@ public class MonumentoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Monumento> getById(@PathVariable Long id) {
-        if (monumentoRepository.existsById(id)) {
-            return ResponseEntity.ok(monumentoRepository.findById(id).get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        
+        Monumento monumento = monumentoRepository.findById(id).orElse(null);
+
+        return monumento != null ? ResponseEntity.ok(monumento) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
     }
+
+    @PostMapping("/add")
+    public ResponseEntity<Monumento> addMonumento(@RequestBody Monumento monumento) {
+        Monumento newMonumento = monumentoRepository.save(monumento);
+        return ResponseEntity.ok(newMonumento);
+    }
+
 }
     

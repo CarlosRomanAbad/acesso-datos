@@ -1,19 +1,25 @@
-package com.api.example.demo_api.initData;
+/*package com.api.example.demo_api.initData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+
 import com.api.example.demo_api.model.Monumento;
 import com.api.example.demo_api.repository.MonumentoRepository;
+
+
 
 
 @Component
 @RequiredArgsConstructor
 public class InitData {
 
+
     private final MonumentoRepository repo;
+
 
     @jakarta.annotation.PostConstruct
     public void init() {
+
 
         Monumento puertaDelSol = new Monumento();
         puertaDelSol.setCodigoPais("ES");
@@ -25,7 +31,9 @@ public class InitData {
         puertaDelSol.setDescripcion("Un famoso punto de referencia en Madrid.");
         puertaDelSol.setUrlFoto("http://example.com/puerta_del_sol.jpg");
 
+
         repo.save(puertaDelSol);
+
 
         Monumento torreBelem = new Monumento();
         torreBelem.setCodigoPais("PT");
@@ -37,7 +45,9 @@ public class InitData {
         torreBelem.setDescripcion("Una torre histórica situada en Lisboa.");
         torreBelem.setUrlFoto("http://example.com/torre_de_belem.jpg");
 
+
         repo.save(torreBelem);
+
 
         Monumento machuPicchu = new Monumento();
         machuPicchu.setCodigoPais("PE");
@@ -49,6 +59,8 @@ public class InitData {
         machuPicchu.setDescripcion("Una antigua ciudad inca en los Andes.");
         machuPicchu.setUrlFoto("http://example.com/machu_picchu.jpg");
 
+
         repo.save(machuPicchu);
     }
 }
+*/

@@ -21,5 +21,12 @@ public class MonumentoService {
     
     public void deleteMonumentoById(Long id) {
         repo.deleteById(id);
-    }   
+        
+    }
+    
+    public void addMonumento(Monumento monumento) {
+        repo.save(monumento);
+    }
 }
+
+
