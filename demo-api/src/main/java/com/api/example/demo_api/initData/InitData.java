@@ -1,4 +1,4 @@
-/*package com.api.example.demo_api.initData;
+package com.api.example.demo_api.initData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -63,4 +63,3 @@ public class InitData {
         repo.save(machuPicchu);
     }
 }
-*/

@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.example.demo_api.model.Monumento;
 import com.api.example.demo_api.repository.MonumentoRepository;
+import com.api.example.demo_api.service.MonumentoService;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MonumentoController {
     
     private final MonumentoRepository monumentoRepository;
+
+    private final MonumentoService monumentoService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Monumento>> getMonumentos(){
@@ -59,6 +63,11 @@ public class MonumentoController {
     public ResponseEntity<Monumento> addMonumento(@RequestBody Monumento monumento) {
         Monumento newMonumento = monumentoRepository.save(monumento);
         return ResponseEntity.ok(newMonumento);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Monumento>editMonumento(@PathVariable Long id, @RequestBody Monumento monumento){
+        return ResponseEntity.ok(monumentoService.updateMonumento(monumento, id));
     }
 
 }

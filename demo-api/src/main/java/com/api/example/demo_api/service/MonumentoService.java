@@ -27,6 +27,16 @@ public class MonumentoService {
     public void addMonumento(Monumento monumento) {
         repo.save(monumento);
     }
+
+    public Monumento updateMonumento(Monumento monumento, Long id) {
+        Monumento oldMonumento = repo.findById(id).orElse(null);
+
+        if(oldMonumento != null){
+            return repo.save(monumento);
+        }
+
+        return monumento;
+    }
 }
 
 
